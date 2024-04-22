@@ -4,6 +4,7 @@ import { Text, useMantineTheme, Button, TextInput, Group, Box, Image, Title, Div
 import { DatePicker } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import EmployeeContext from "../../contexts/EmployeeContext";
+import gravatar from 'gravatar';
 
 const Profile = () => {
 	const theme = useMantineTheme();
@@ -15,7 +16,8 @@ const Profile = () => {
 
 	const { editEmployee, employee, setEditOpened, formProfile } = useContext(EmployeeContext);
 	const [date, setDate] = useState(new Date());
-
+    const gravatarUrl = gravatar.url(employee.email, { s: '150', d: 'identicon' });
+	console.log(gravatarUrl)
 	return (
 		<Box
 			sx={(theme) => ({
@@ -49,8 +51,8 @@ const Profile = () => {
 							width={150}
 							height={150}
 							style={{ boxShadow: "5px 5px 20px #aaa ", borderRadius: "200px" }}
-							src="https://scontent.fcmb1-2.fna.fbcdn.net/v/t1.6435-9/91666095_2292768404362006_5007504646739066880_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Tqnk4sUlBtUAX-82_22&tn=7sBEtrwGPolc1Asf&_nc_ht=scontent.fcmb1-2.fna&oh=00_AT9qt49XaFa2uYb13oLxKWtkV7n0YnwpqTk2p8YqoN2ApQ&oe=62AEC287"
-							alt="Random unsplash image"
+                            src={gravatarUrl}
+                            alt="Employee Avatar"
 						/>
 					</Group>
 					<Title sx={(theme) => ({ color: TitleColor, marginTop: "20px" })} order={2}>
