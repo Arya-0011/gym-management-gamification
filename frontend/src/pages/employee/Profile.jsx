@@ -67,7 +67,7 @@ const Profile = () => {
 					<Text sx={textstyle}>PhoneNumber: {employee.phoneNumber}</Text>
 					<Text sx={textstyle}>NIC: {employee.nic}</Text>
 					<Text sx={textstyle}>Qualifications: {employee.qualifications.join(", ")}</Text>
-					<Text sx={textstyle}>{employee.dob.toString().slice(3, 15)}</Text>
+					<Text sx={textstyle}>{new Date(employee.dob).toLocaleDateString('en-GB')}</Text>
 				</Box>
 				<Box
 					sx={(theme) => ({
