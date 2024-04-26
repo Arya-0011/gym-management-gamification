@@ -52,6 +52,7 @@ export default function (app) {
 
 	// User endpoints
 	app.get("/user/:id", controller.getUserDetails);
+	app.get("/users", controller.getAchievements);
 
 	app.post("/user/login/", controller.login);
 	app.post("/user/register/", controller.createUser);
@@ -85,13 +86,6 @@ export default function (app) {
 	app.post("/user/unenroll/", controller.unenrollUserFromWorkoutProgram);
 	// Get All Enrolled Workout Programs
 	app.get("/user/enrolledWorkoutPrograms/:id", middleware.authenticate, controller.getAllEnrolledWorkoutPrograms);
-
-	// Event endpoints
-	app.get("/events/", controller.getEvents); // get all/sort/search event
-	app.post("/events/", controller.createEvents); // insert one event
-	app.get("/events/:id", controller.getEvent); // get one event
-	app.put("/events/:id", controller.updateEvents); // update one event
-	app.delete("/events/:id", controller.deleteEvents); // delete one event
 
 	// WorkoutScR endpoints
 	app.post("/WorkoutScR/", controller.insertWorkoutScR); // insert one WorkoutScR
@@ -127,4 +121,5 @@ export default function (app) {
 
 	//add answer to question
 	app.post("/question/answer/", controller.addAnswer); //insert one answer
+
 }

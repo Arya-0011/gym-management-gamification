@@ -5,6 +5,7 @@ import logger from "../../util/logger";
 export const login = async (request, response, next) => {
 	const { username, password } = request.body;
 
+
 	if (username && password) {
 		await UserService.authenticateUser(username, password)
 			.then(async (user) => {
@@ -136,6 +137,18 @@ export const getUserDetails = async (req, res, next) => {
 			next();
 		});
 };
+
+export const getAchievements = async (req, res, next) => {
+	await UserService.getAchievements()
+		.then((data) => {
+			req.handleResponse.successRespond(res)(data);
+			next();
+		})
+		.catch((error) => {
+			req.handleResponse.errorRespond(res)(error.message);
+			next();
+		});
+}
 
 // Get All employee Details
 export const getAllEmployees = async (req, res, next) => {

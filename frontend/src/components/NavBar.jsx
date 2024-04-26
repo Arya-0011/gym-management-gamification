@@ -73,8 +73,7 @@ function NavBar() {
 		{ link: "/", label: "Home" },
 		{ link: "/workoutProgram", label: "Workout Programs" },
 		{ link: "/workout", label: "Workouts" },
-		// { link: "/blogs", label: "Blogs" },
-		// { link: "/events", label: "Events" },
+		{ link: "/events", label: "LeaderBoard" },
 		{ link: "/package", label: "Packages" },
 	];
 	const navigate = useNavigate();
@@ -133,9 +132,6 @@ function NavBar() {
 							<Menu.Label>Trainer</Menu.Label>
 							<Link className={classes.link} to="/trainers/profile">
 								<Menu.Item icon={<UserCircle size={14} />}>Profile</Menu.Item>
-							</Link>
-							<Link className={classes.link} to="/trainers/events">
-								<Menu.Item icon={<CalendarEvent size={14} />}>Manage Events</Menu.Item>
 							</Link>
 							<Link className={classes.link} to="/trainers">
 								<Menu.Item icon={<Dashboard size={14} />}>Trainer Dashboard</Menu.Item>

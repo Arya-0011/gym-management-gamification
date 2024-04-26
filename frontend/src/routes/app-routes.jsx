@@ -8,7 +8,6 @@ import {
 	Home,
 	WorkoutProgram,
 	Events,
-	Eventlist,
 	TrainerDashboard,
 	TrainerLogin,
 	ListTrainers,
@@ -25,7 +24,6 @@ import {
 	Workout,
 	AdminLogin,
 	AdminDashboard,
-	EventReport,
 	AdminProfile,
 	CommonLogin,
 	WorkoutScRList,
@@ -106,7 +104,6 @@ const AppRoutes = () => {
 						</Route>
 
 						<Route exact path="/events" element={<Events />} />
-						<Route exact path="/trainers/events" element={<Eventlist />} />
 						<Route exact path="/notice" element={<Notice />} />
 
 						{/* <Route exact path="/blogs" element={<Blogs />} />
@@ -171,12 +168,10 @@ const AppRoutes = () => {
 						</Route>
 
 						{/* Trainer Routes */}
-						<Route exact path="/event-report" element={<EventReport />} />
 
 						<Route exact path="/trainers" element={<PrivateRoute permissionLevel="TRAINER" />}>
 							<Route exact path="/trainers" element={<TrainerDashboard />} />
 							<Route exact path="/trainers/list" element={<ListTrainers />} />
-							<Route exact path="/trainers/events" element={<Eventlist />} />
 							<Route exact path="/trainers/profile" element={<TrainerProfile />} />
 							{/* <Route exact path="/trainer/bd" element={<BD />} /> */}
 						</Route>

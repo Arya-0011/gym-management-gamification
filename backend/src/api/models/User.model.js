@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 import jwt from "jsonwebtoken";
 
+
 const UserSchema = mongoose.Schema(
 	{
 		avatar: {
@@ -63,6 +64,35 @@ const UserSchema = mongoose.Schema(
 		gender: {
 			type: String,
 		},
+
+		totalPoints: [{
+			Cardiovascular: { type: Number },
+			StrengthTraining: { type: Number },
+			FlexibilityAndMobility: { type: Number },
+			HighIntensityIntervalTraining: { type: Number }
+		}
+		],
+
+		leaderboardRank: [
+			{ type: Number }
+		],
+
+		badges: [
+			{ type: String }
+		],
+
+		achievements: [
+			{
+				name: {
+					type: String,
+					required: true
+				},
+				image_url: {
+					type: String,
+					required: true
+				}
+			}
+		],
 
 		permissionLevel: {
 			type: String,

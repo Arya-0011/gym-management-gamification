@@ -17,7 +17,6 @@ const Profile = () => {
 	const { editEmployee, employee, setEditOpened, formProfile } = useContext(EmployeeContext);
 	const [date, setDate] = useState(new Date());
     const gravatarUrl = gravatar.url(employee.email, { s: '150', d: 'identicon' });
-	console.log(gravatarUrl)
 	return (
 		<Box
 			sx={(theme) => ({

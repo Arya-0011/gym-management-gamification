@@ -163,6 +163,16 @@ export const getUserDetails = async (userId) => {
 		});
 };
 
+export const getAchievements = async () => {
+	try {
+		const users = await UserModel.find().select('firstName lastName totalPoints leaderboardRank badges achievements');
+
+		return users;
+	} catch (error) {
+		throw new Error(error.message);
+	}
+};
+
 //Get all Users where permission is EMPLOYEE
 export const getAllEmployees = async () => {
 	return await UserModel.find({ permissionLevel: "EMPLOYEE" })

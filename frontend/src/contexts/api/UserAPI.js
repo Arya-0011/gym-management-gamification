@@ -35,6 +35,7 @@ class UserAPI {
 	static searchUserMember(search) {
 		return axios.get(`${BASE_URL}/member/search/${search}`, requestConfigJson);
 	}
+
 	static searchUser(search) {
 		return axios.get(`${BASE_URL}/employee/search/${search}`, requestConfigJson);
 	}

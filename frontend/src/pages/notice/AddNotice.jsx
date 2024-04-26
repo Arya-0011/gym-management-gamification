@@ -20,7 +20,7 @@ const AddNotice = () => {
 								{ value: "Holiday", label: "Holiday" },
 								{ value: "Promotion", label: "Promotion" },
 								{ value: "Offer", label: "Offer" },
-								{ value: "Event", label: "Event" },
+								{ value: "Event", label: "LeaderBoard" },
 								{ value: "System_Maintaince", label: "System Maintaince" },
 							]}
 							{...form.getInputProps("category")}

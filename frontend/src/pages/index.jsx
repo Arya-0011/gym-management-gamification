@@ -2,7 +2,7 @@ import Sample from "./sample";
 import Home from "./home";
 import WorkoutProgram from "./workoutProgram";
 import { TrainerDashboard, TrainerLogin, ListTrainers, TrainerRegister, TrainerProfile } from "./trainer";
-import { Events, Eventlist, EventReport } from "./events";
+import Events from "./events";
 import Dashboard from "./dashboard";
 import Notice from "./notice";
 import Feedback from "./feedback";
@@ -48,8 +48,6 @@ export {
 	Dashboard,
 	//PersonalTrainerRequest,
 	Events,
-	Eventlist,
-	EventReport,
 	TrainerDashboard,
 	TrainerLogin,
 	ListTrainers,

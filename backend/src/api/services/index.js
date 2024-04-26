@@ -1,84 +1,22 @@
 import { insertSample, getAllSamples, getOneSample, updateSample, deleteSample, searchSamples } from "./Sample.service";
 
-import {
-	insertWorkoutProgram,
-	getAllWorkoutPrograms,
-	getOneWorkoutProgram,
-	updateWorkoutProgram,
-	deleteWorkoutProgram,
-	searchWorkoutPrograms,
-	getTotalRevenue,
-	getWorkoutRecommendations
-} from "./WorkoutProgram.service";
+import { insertWorkoutProgram, getAllWorkoutPrograms, getOneWorkoutProgram, updateWorkoutProgram, deleteWorkoutProgram, searchWorkoutPrograms, getTotalRevenue, getWorkoutRecommendations } from "./WorkoutProgram.service";
 
-import {
-	insertTrainerBD,
-	getAllTrainerBD,
-	getOneTrainerBD,
-	updateTrainerBD,
-	deleteTrainerBD,
-} from "./TrainerBD.service";
+import { insertTrainerBD, getAllTrainerBD, getOneTrainerBD, updateTrainerBD, deleteTrainerBD } from "./TrainerBD.service";
 
-import {
-	insertPersonalTrainerReq,
-	getAllPersonalTrainerReq,
-	getOnePersonalTrainerReq,
-	updatePersonalTrainerReq,
-	deletePersonalTrainerReq,
-	searchPersonalTrainerReq,
-} from "./PersonalTrainerReq.service";
+import { insertPersonalTrainerReq, getAllPersonalTrainerReq, getOnePersonalTrainerReq, updatePersonalTrainerReq, deletePersonalTrainerReq, searchPersonalTrainerReq } from "./PersonalTrainerReq.service";
 
-import {
-	insertSalary,
-	updateSalary,
-	getAllSalaries,
-	getOneSalary,
-	searchSalaries,
-	getOneEmployeeSalary,
-} from "./Salary.service";
+import { insertSalary, updateSalary, getAllSalaries, getOneSalary, searchSalaries, getOneEmployeeSalary } from "./Salary.service";
 
-import {
-	authenticateUser,
-	insertUser,
-	getAllEnrolledWorkoutPrograms,
-	enrollUserToWorkoutProgram,
-	unenrollUserFromWorkoutProgram,
-	getMembersEmailList,
-	getTrainersEmailList,
-	getAdminsEmailList,
-	getEmployeesEmailList,
-	deleteUser,
-	getUserDetails,
-	getAllEmployees,
-	updateUser,
-	searchUsersMember,
-	getAllEnrolledWorkoutProgramsForAllUsers,
-} from "./User.service";
+import { authenticateUser, insertUser, getAllEnrolledWorkoutPrograms, enrollUserToWorkoutProgram, unenrollUserFromWorkoutProgram, getMembersEmailList, getTrainersEmailList, getAdminsEmailList, getEmployeesEmailList, deleteUser, getUserDetails, getAllEmployees, updateUser, searchUsersMember, getAllEnrolledWorkoutProgramsForAllUsers, getAchievements } from "./User.service";
 
-import {
-	insertWorkoutScR,
-	updateWorkoutScR,
-	deleteWorkoutScR,
-	getAllWorkoutScR,
-	getOneWorkoutScR,
-} from "./WorkoutScR.service";
+import { insertWorkoutScR, updateWorkoutScR, deleteWorkoutScR, getAllWorkoutScR, getOneWorkoutScR } from "./WorkoutScR.service";
 
-import {
-	insertWorkout,
-	getAllWorkouts,
-	getOneWorkout,
-	updateworkout,
-	deleteWorkout,
-	searchWorkouts,
-	increaseViewCount,
-	getAllWorkoutsOrderByViewCount,
-} from "./Workout.service";
+import { insertWorkout, getAllWorkouts, getOneWorkout, updateworkout, deleteWorkout, searchWorkouts, increaseViewCount, getAllWorkoutsOrderByViewCount } from "./Workout.service";
 
 import { insertNotice, getAllNotices, getOneNotice, updateNotice, deleteNotice } from "./Notice.service";
 
 import { insertQuestion, updateQuestion, deleteQuestion, getAllQuestions, searchQuestions } from "./Question.service";
-
-import { updateEvents, deleteEvents, createEvents, getEvent, getEvents } from "./Event.service";
 
 import { getTrainer, updateTrainers, deleteTrainers, getTrainers, createTrainers } from "./Trainer.service";
 
@@ -146,6 +84,7 @@ export default {
 	getEmployeesEmailList,
 	deleteUser,
 	getUserDetails,
+	getAchievements,
 	getAllEmployees,
 	updateUser,
 	searchUsersMember,
@@ -167,13 +106,6 @@ export default {
 	getOneNotice,
 	updateNotice,
 	deleteNotice,
-
-	// Event services
-	getEvent,
-	getEvents,
-	updateEvents,
-	deleteEvents,
-	createEvents,
 
 	//PersonalRequest services
 	insertPersonalTrainerReq,
