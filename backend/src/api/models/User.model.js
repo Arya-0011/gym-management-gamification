@@ -65,13 +65,13 @@ const UserSchema = mongoose.Schema(
 			type: String,
 		},
 
-		totalPoints: [{
+		totalPoints: {
 			Cardiovascular: { type: Number },
 			StrengthTraining: { type: Number },
 			FlexibilityAndMobility: { type: Number },
 			HighIntensityIntervalTraining: { type: Number }
 		}
-		],
+		,
 
 		leaderboardRank: [
 			{ type: Number }

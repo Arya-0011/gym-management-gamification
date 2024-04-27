@@ -53,6 +53,7 @@ export default function (app) {
 	// User endpoints
 	app.get("/user/:id", controller.getUserDetails);
 	app.get("/users", controller.getAchievements);
+	app.get("/getAllUserDetails", controller.getAllUserDetails);
 
 	app.post("/user/login/", controller.login);
 	app.post("/user/register/", controller.createUser);

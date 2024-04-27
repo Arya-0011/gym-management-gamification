@@ -152,6 +152,16 @@ export const deleteUser = async (userId) => {
 		});
 };
 
+export const getAllUserDetails = async () => {
+	return await UserModel.find()
+		.then((user) => {
+			return user;
+		})
+		.catch((error) => {
+			throw new Error(error.message);
+		});
+}
+
 // Get user details
 export const getUserDetails = async (userId) => {
 	return await UserModel.findById(userId)
@@ -185,24 +195,51 @@ export const getAllEmployees = async () => {
 			throw new Error(error.message);
 		});
 };
+export const updateLeaderboardRank = async (userId) => {
+    try {
+        // Retrieve the user for which leaderboard rank needs to be updated
+        const user = await UserModel.findById(userId);
+        if (!user) {
+            throw new Error("User not found");
+        }
 
-// Update user
-export const updateUser = async (userId, userData) => {
-	return await UserModel.findByIdAndUpdate(userId, userData, {
-		new: true,
-	})
-		.then((user) => {
-			if (user) {
-				return user;
-			} else {
-				throw new Error("User not found");
-			}
-		})
-		.catch((error) => {
-			throw new Error(error.message);
-		});
+        // Calculate total points based on the provided formula
+        const totalPoints = user.totalPoints.Cardiovascular +
+                           user.totalPoints.StrengthTraining +
+                           user.totalPoints.FlexibilityAndMobility +
+                           user.totalPoints.HighIntensityIntervalTraining;
+
+        console.log("Total Points:", totalPoints);
+
+        // Calculate rank using the formula (inverted for upside down ranking)
+		const rank = Math.max(Math.ceil((1 - (totalPoints / 100)) * 4), 1);
+
+        console.log("Calculated Rank:", rank);
+
+        // Update leaderboard rank for the specified user
+        user.leaderboardRank = rank;
+        await user.save();
+
+        return user;
+    } catch (error) {
+        throw new Error(error.message);
+    }
 };
 
+// Function to update user data and trigger leaderboard rank update
+export const updateUser = async (userId, userData) => {
+	try {
+		// Update user data
+		const updatedUser = await UserModel.findByIdAndUpdate(userId, userData, { new: true });
+
+		// Update leaderboard rank
+		await updateLeaderboardRank(userId);
+
+		return updatedUser;
+	} catch (error) {
+		throw new Error(error.message);
+	}
+};
 // Search User from first name,last name or nic
 export const searchUsersMember = async (searchTerm) => {
 	return await UserModel.find({

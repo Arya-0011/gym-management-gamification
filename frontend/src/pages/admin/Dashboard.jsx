@@ -28,7 +28,7 @@ const Dashboard = () => {
 
 				<Card shadow="xs" padding="md" style={{ width: "100%" }}>
 					<Link style={{ textDecoration: "none", color: "#fff" }} to="/employeeList">
-						<Button fullWidth color="blue">Employees</Button>
+						<Button fullWidth color="blue">Users</Button>
 					</Link>
 				</Card>
 

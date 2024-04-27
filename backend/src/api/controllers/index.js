@@ -6,7 +6,7 @@ import { insertTrainerBD, getAllTrainerBD, getOneTrainerBD, updateTrainerBD, del
 
 import { insertPersonalTrainerReq, getAllPersonalTrainerReq, getOnePersonalTrainerReq, updatePersonalTrainerReq, deletePersonalTrainerReq, searchPersonalTrainerReq } from "./PersonalTrainerReq.controller";
 
-import { login, createUser, getAdminDashboard, getAllEnrolledWorkoutPrograms, enrollUserToWorkoutProgram, unenrollUserFromWorkoutProgram, deleteUser, getUserDetails, getAllEmployees, updateUser, searchUsersMember, getAchievements } from "./User.Controller";
+import { login, createUser, getAdminDashboard, getAllEnrolledWorkoutPrograms, enrollUserToWorkoutProgram, unenrollUserFromWorkoutProgram, deleteUser, getUserDetails, getAllEmployees, updateUser, searchUsersMember, getAchievements, getAllUserDetails } from "./User.Controller";
 
 import { insertWorkoutScR, updateWorkoutScR, deleteWorkoutScR, getAllWorkoutScR, getOneWorkoutScR } from "./WorkoutScR.Controller";
 
@@ -95,6 +95,7 @@ export default {
 	getOneNotice,
 	updateNotice,
 	deleteNotice,
+	getAllUserDetails,
 
 	//Question Controllers
 	insertQuestion,

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import LineChart from "../../components/chartReq/LineChart";
-import { Grid, Card, createStyles, Text, Badge, Avatar } from "@mantine/core";
+import { Grid, Card, createStyles, Text, Badge, Avatar, Modal, TextInput, Button } from "@mantine/core";
 import PieChart from "../../components/chartReq/PieChart";
 import BarChart from "../../components/chartReq/BarChart";
+import axios from 'axios';
+import UpdateUserModal from "./UpdateUserModal"; // Assuming UpdateUserModal is in the same directory
 
 const useStyles = createStyles((theme) => ({
 
@@ -33,6 +35,7 @@ const useStyles = createStyles((theme) => ({
 const Profile = () => {
 	const [user, setUser] = useState(null);
 	const { classes } = useStyles();
+	const [showModal, setShowModal] = useState(false); // State variable to manage modal visibility
 
 	useEffect(() => {
 		const fetchUserData = async () => {
@@ -47,7 +50,6 @@ const Profile = () => {
 					throw new Error("Failed to fetch user data");
 				}
 				const userData = await response.json();
-				console.log(userData)
 				setUser(userData);
 			} catch (error) {
 				console.error(error);
@@ -77,6 +79,13 @@ const Profile = () => {
 		],
 	};
 
+	const handleUpdateClick = () => {
+		setShowModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
 	return (
 		<div>
 			<Grid justify="space-around" gutter="sm">
@@ -122,8 +131,13 @@ const Profile = () => {
 						)}
 					</Grid>
 				</div>
-
-
+				{/* <Button style={{ marginTop: 10 }}>Update User Data</Button> */}
+				{user && (
+					<div>
+						<Button onClick={handleUpdateClick} style={{ marginTop: 10 }}>Update User Data</Button>
+						{showModal && <UpdateUserModal userData={user} onClose={handleCloseModal} />}
+					</div>
+				)}
 			</Grid>
 
 		</div>

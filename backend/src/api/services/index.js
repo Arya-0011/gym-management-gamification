@@ -8,7 +8,7 @@ import { insertPersonalTrainerReq, getAllPersonalTrainerReq, getOnePersonalTrain
 
 import { insertSalary, updateSalary, getAllSalaries, getOneSalary, searchSalaries, getOneEmployeeSalary } from "./Salary.service";
 
-import { authenticateUser, insertUser, getAllEnrolledWorkoutPrograms, enrollUserToWorkoutProgram, unenrollUserFromWorkoutProgram, getMembersEmailList, getTrainersEmailList, getAdminsEmailList, getEmployeesEmailList, deleteUser, getUserDetails, getAllEmployees, updateUser, searchUsersMember, getAllEnrolledWorkoutProgramsForAllUsers, getAchievements } from "./User.service";
+import { authenticateUser, insertUser, getAllEnrolledWorkoutPrograms, enrollUserToWorkoutProgram, unenrollUserFromWorkoutProgram, getMembersEmailList, getTrainersEmailList, getAdminsEmailList, getEmployeesEmailList, deleteUser, getUserDetails, getAllEmployees, updateUser, searchUsersMember, getAllEnrolledWorkoutProgramsForAllUsers, getAchievements, getAllUserDetails } from "./User.service";
 
 import { insertWorkoutScR, updateWorkoutScR, deleteWorkoutScR, getAllWorkoutScR, getOneWorkoutScR } from "./WorkoutScR.service";
 
@@ -89,7 +89,7 @@ export default {
 	updateUser,
 	searchUsersMember,
 	getAllEnrolledWorkoutProgramsForAllUsers,
-
+	getAllUserDetails,
 	// Workout services
 	insertWorkout,
 	getAllWorkouts,

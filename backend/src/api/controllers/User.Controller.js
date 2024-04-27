@@ -138,6 +138,18 @@ export const getUserDetails = async (req, res, next) => {
 		});
 };
 
+export const getAllUserDetails = async (req, res, next) => {
+	await UserService.getAllUserDetails()
+		.then((data) => {
+			req.handleResponse.successRespond(res)(data);
+			next();
+		})
+		.catch((error) => {
+			req.handleResponse.errorRespond(res)(error.message);
+			next();
+		});
+};
+
 export const getAchievements = async (req, res, next) => {
 	await UserService.getAchievements()
 		.then((data) => {
