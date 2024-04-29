@@ -82,16 +82,7 @@ const UserSchema = mongoose.Schema(
 		],
 
 		achievements: [
-			{
-				name: {
-					type: String,
-					required: true
-				},
-				image_url: {
-					type: String,
-					required: true
-				}
-			}
+			{ type: String }
 		],
 
 		permissionLevel: {

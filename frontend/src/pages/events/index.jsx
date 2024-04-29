@@ -15,20 +15,6 @@ function UserCard({ user }) {
         </Text>
       </div>
       <div>
-        {user.achievements.length > 0 && (
-          <>
-            <Text size="lg" weight={700} style={{ marginTop: 16 }}>
-              Achievements
-            </Text>
-            <ul>
-              {user.achievements.map((achievement) => (
-                <li key={achievement._id}>
-                  <Text size="sm">{achievement.name}</Text>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
         {user.badges.length > 0 && (
           <>
             <Text size="lg" weight={700} style={{ marginTop: 16 }}>
@@ -43,6 +29,22 @@ function UserCard({ user }) {
             </div>
           </>
         )}
+
+        {user.achievements.length > 0 && (
+          <>
+            <Text size="lg" weight={700} style={{ marginTop: 16 }}>
+              Achievements
+            </Text>
+            <div style={{ marginTop: 8 }}>
+              {user.achievements.map((achievement, index) => (
+                <Badge key={index} style={{ marginRight: 8, marginBottom: 8 }}>
+                  {achievement}
+                </Badge>
+              ))}
+            </div>
+          </>
+        )}
+
         {user.totalPoints && (
           <>
             <Text size="lg" weight={700} style={{ marginTop: 16 }}>
@@ -90,6 +92,8 @@ function Events() {
     user.badges.length > 0 ||
     (user.totalPoints && Object.keys(user.totalPoints).length > 0)
   );
+
+
 
   // Sort the filteredUserData based on leaderboard rank
   filteredUserData.sort((a, b) => {

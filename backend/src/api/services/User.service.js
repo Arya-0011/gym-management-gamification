@@ -209,12 +209,9 @@ export const updateLeaderboardRank = async (userId) => {
                            user.totalPoints.FlexibilityAndMobility +
                            user.totalPoints.HighIntensityIntervalTraining;
 
-        console.log("Total Points:", totalPoints);
 
         // Calculate rank using the formula (inverted for upside down ranking)
 		const rank = Math.max(Math.ceil((1 - (totalPoints / 100)) * 4), 1);
-
-        console.log("Calculated Rank:", rank);
 
         // Update leaderboard rank for the specified user
         user.leaderboardRank = rank;

@@ -69,7 +69,7 @@ const Profile = () => {
 				borderWidth: 1,
 				hoverBackgroundColor: "rgba(255,99,132,0.4)",
 				hoverBorderColor: "rgba(255,99,132,1)",
-				data: user ? [
+				data: user && Array.isArray(user.totalPoints) ? [
 					user.totalPoints.reduce((acc, curr) => acc + curr.Cardiovascular, 0),
 					user.totalPoints.reduce((acc, curr) => acc + curr.StrengthTraining, 0),
 					user.totalPoints.reduce((acc, curr) => acc + curr.FlexibilityAndMobility, 0),
@@ -78,6 +78,7 @@ const Profile = () => {
 			},
 		],
 	};
+
 
 	const handleUpdateClick = () => {
 		setShowModal(true);
@@ -112,24 +113,19 @@ const Profile = () => {
 							</Badge>
 						))}
 				</div>
+				<div>
+					<h2>Achievements</h2>
+					{user &&
+						user.achievements.map((achievement, index) => ( // Changed variable name to "achievement"
+							<Badge key={index} variant="gradient" gradient={{ from: 'rgba(184, 174, 174, 1)', to: 'rgba(94, 59, 55, 1)', deg: 90 }}
+								color="gray" style={{ marginRight: 8 }}>
+								{achievement}
+							</Badge>
+						))}
+				</div>
 
 				<div>
-					<Grid gutter="sm">
 
-						{user && (
-							<div>
-								<h2>Achievements</h2>
-								<Grid gutter="sm">
-									{user.achievements.map((achievement, index) => (
-										<div key={index} style={{ marginRight: 20 }}>
-											<Avatar src={achievement.image} alt="Achievement Image" />
-											<span style={{ marginTop: 8, display: 'block', textAlign: 'center' }}>{achievement.name}</span>
-										</div>
-									))}
-								</Grid>
-							</div>
-						)}
-					</Grid>
 				</div>
 				{/* <Button style={{ marginTop: 10 }}>Update User Data</Button> */}
 				{user && (

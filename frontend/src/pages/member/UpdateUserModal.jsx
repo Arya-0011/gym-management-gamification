@@ -5,15 +5,29 @@ import axios from 'axios';
 const UpdateUserModal = ({ userData, onClose }) => {
     const [formData, setFormData] = useState({
         badges: userData.badges.join(", "),
-        totalPoints: userData.totalPoints,
-        achievements: userData.achievements.map(achievement => ({ name: achievement.name, image_url: achievement.image })),
+        achievements: userData.achievements.join(", "),
+        totalPoints: {
+            Cardiovascular: userData.totalPoints.Cardiovascular || "",
+            StrengthTraining: userData.totalPoints.StrengthTraining || "",
+            FlexibilityAndMobility: userData.totalPoints.FlexibilityAndMobility || "",
+            HighIntensityIntervalTraining: userData.totalPoints.HighIntensityIntervalTraining || ""
+        }
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value)
-        console.log(formData)
-        setFormData({ ...formData, [name]: value });
+        if (name.startsWith("totalPoints.")) {
+            const field = name.split(".")[1];
+            setFormData({
+                ...formData,
+                totalPoints: {
+                    ...formData.totalPoints,
+                    [field]: parseInt(value) || ""
+                }
+            });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
     };
 
     const handleSubmit = (e) => {
@@ -21,22 +35,13 @@ const UpdateUserModal = ({ userData, onClose }) => {
         const userId = localStorage.getItem("uID");
 
         // Separate the formData into badges, achievements, and totalPoints
-        const { badges, achievements, totalPoints, ...otherData } = formData;
-
-        // Create the updated totalPoints object
-        const updatedTotalPoints = {
-            Cardiovascular: parseInt(totalPoints.Cardiovascular),
-            StrengthTraining: parseInt(totalPoints.StrengthTraining),
-            FlexibilityAndMobility: parseInt(totalPoints.FlexibilityAndMobility),
-            HighIntensityIntervalTraining: parseInt(totalPoints.HighIntensityIntervalTraining)
-        };
+        const { badges, achievements, totalPoints } = formData;
 
         // Create the updated user object with separate properties for badges, achievements, and totalPoints
         const updatedUser = {
             badges: badges.split(',').map(badge => badge.trim()), // Convert badges back to an array
-            achievements,
-            totalPoints: updatedTotalPoints,
-            // ...otherData // Include other fields if any
+            achievements: achievements.split(',').map(achievement => achievement.trim()),
+            totalPoints,
         };
 
         axios.put(`http://localhost:5000/user/${userId}`, updatedUser)
@@ -59,13 +64,20 @@ const UpdateUserModal = ({ userData, onClose }) => {
                     value={formData.badges}
                     onChange={handleChange}
                 />
-
                 <TextInput
+                    label="Achievements"
+                    id="achievements"
+                    name="achievements"
+                    value={formData.achievements}
+                    onChange={handleChange}
+                />
+
+<TextInput
                     label="Cardiovascular"
                     id="Cardiovascular"
                     name="totalPoints.Cardiovascular"
                     type="number"
-                    value={formData.totalPoints.Cardiovascular || ''}
+                    value={formData.totalPoints.Cardiovascular}
                     onChange={handleChange}
                 />
 
@@ -74,7 +86,7 @@ const UpdateUserModal = ({ userData, onClose }) => {
                     id="StrengthTraining"
                     name="totalPoints.StrengthTraining"
                     type="number"
-                    value={formData.totalPoints.StrengthTraining || ''}
+                    value={formData.totalPoints.StrengthTraining}
                     onChange={handleChange}
                 />
 
@@ -83,7 +95,7 @@ const UpdateUserModal = ({ userData, onClose }) => {
                     id="FlexibilityAndMobility"
                     name="totalPoints.FlexibilityAndMobility"
                     type="number"
-                    value={formData.totalPoints.FlexibilityAndMobility || ''}
+                    value={formData.totalPoints.FlexibilityAndMobility}
                     onChange={handleChange}
                 />
 
@@ -92,7 +104,7 @@ const UpdateUserModal = ({ userData, onClose }) => {
                     id="HighIntensityIntervalTraining"
                     name="totalPoints.HighIntensityIntervalTraining"
                     type="number"
-                    value={formData.totalPoints.HighIntensityIntervalTraining || ''}
+                    value={formData.totalPoints.HighIntensityIntervalTraining}
                     onChange={handleChange}
                 />
 
