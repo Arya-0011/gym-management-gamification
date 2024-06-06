@@ -45,7 +45,7 @@ const Cards = () => {
 		const heightInMeters = height / 100;
 		const calculatedBMI = weight / (heightInMeters * heightInMeters);
 		setBMI(calculatedBMI.toFixed(2));
-
+	
 		let category;
 		if (calculatedBMI < 18.5) {
 			category = 'underweight';
@@ -56,7 +56,7 @@ const Cards = () => {
 		} else {
 			category = 'obese';
 		}
-
+	
 		try {
 			const response = await WorkoutProgramAPI.getWorkoutRecommendationsByBMI(category);
 			setRecommendations(response.data.recommendations);
@@ -64,7 +64,6 @@ const Cards = () => {
 			console.error('Error fetching recommendations:', error);
 			setRecommendations([]);
 		}
-
 	};
 
 	return (
