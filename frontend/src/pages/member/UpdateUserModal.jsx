@@ -7,10 +7,10 @@ const UpdateUserModal = ({ userData, onClose }) => {
         badges: userData.badges.join(", "),
         achievements: userData.achievements.join(", "),
         totalPoints: {
-            Cardiovascular: userData.totalPoints.Cardiovascular || "",
-            StrengthTraining: userData.totalPoints.StrengthTraining || "",
-            FlexibilityAndMobility: userData.totalPoints.FlexibilityAndMobility || "",
-            HighIntensityIntervalTraining: userData.totalPoints.HighIntensityIntervalTraining || ""
+            Cardiovascular: userData.totalPoints?.Cardiovascular || "",
+            StrengthTraining: userData.totalPoints?.StrengthTraining || "",
+            FlexibilityAndMobility: userData.totalPoints?.FlexibilityAndMobility || "",
+            HighIntensityIntervalTraining: userData.totalPoints?.HighIntensityIntervalTraining || ""
         }
     });
 
