@@ -127,16 +127,16 @@ export const getAllWorkoutProgramsWithTotalRevenue = async (request, response, n
 
 
 export const getWorkoutRecommendationsByBMI = async (request, response, next) => {
-	
-	const { category } = request.query;
-	try {
-		// Get all workout recommendations based on BMI category
-		const recommendations = await WorkoutProgramService.getWorkoutRecommendations(category);
-		// console.log(recommendations);
-		// Send the recommendations as a response
-		response.status(200).json({ recommendations });
-		next();
-	} catch (error) {
-		response.status(500).json({ message: error.message });
-	}
+    const { category } = request.query;
+    try {
+        // Get all workout recommendations based on BMI category
+        const recommendations = await WorkoutProgramService.getWorkoutRecommendations(category);
+        // Send the recommendations as a response
+        response.status(200).json({ recommendations });
+    } catch (error) {
+        console.error(`Error fetching workout recommendations for category ${category}:`, error.message);
+        response.status(500).json({ message: `Failed to fetch recommendations: ${error.message}` });
+    } finally {
+        next();
+    }
 };

@@ -1,5 +1,6 @@
 import WorkoutModel from "../models/Workout.model";
 
+
 // Insert one Workout
 export const insertWorkout = async (workoutData) => {
 	return await WorkoutModel.create(workoutData)
